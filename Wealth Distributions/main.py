@@ -20,18 +20,19 @@ a = np.full(N, alpha)
 b = np.full(N, beta)
 
 def main():
-    nsim = 10  # Número de simulaciones para promediar
-    heights = np.zeros(39)  # Alturas de las barras
-    bins = np.arange(0, 4, 0.1)  # Bins con espaciamiento 0.01
+    M = 10
+    heights = np.zeros(39)
+    bins = np.arange(0, 4, 0.1)
 
-    for i in range(nsim):
+    for i in range(M):
         print(i)
-        wealth = sim(a, b)  # Simulación
-        n, bins, histograux = plt.hist(wealth, bins=bins, density=True, stacked=True)  # Histograma
-        plot(histograux, bins)
-        heights = heights + (n / nsim)  # Promediando
-    br = plt.bar(bins[:-1], heights, align="edge", width=0.1, ec=colors["cadetblue"], color=colors["powderblue"])  # Diagrama de barras
-    plot(br, bins)  # Plot
+        wealth = sim(a, b)
+        n, bins, aux = plt.hist(wealth, bins=bins, density=True, stacked=True)
+        plot(aux, bins)
+        heights = heights + (n / M)
+    br = plt.bar(bins[:-1], heights, align="edge", width=0.1, ec=colors["cadetblue"], color=colors["powderblue"])
+    plot(br, bins)
+
 
 def sim(a, b):
     for i in range(1, T + 1):
@@ -49,19 +50,21 @@ def price(a, b, f):
     q = np.dot(f, b)
     return p / q
 
+
 def wealth(a, b, p):
     wealth = a + (b * p)
     return wealth
 
+
 def plot(x, bi):
   plt.ylim(0,1)
   plt.xlim(0,4)
-  plt.title("T = %.d" %(T))
+  plt.title("T = %.d" %T)
   plt.xlabel("Riqueza")
   plt.ylabel("Probabilidad")
-  expvalues = 4 * bi * np.exp(-2*bi) #Para graficar la exponencial
-  #histogram = x #Histograma
-  expplot = plt.plot(bi, expvalues, color=colors["lightsalmon"]) #Exponencial
+  expvalues = 4 * bi * np.exp(-2*bi)
+  plt.plot(bi, expvalues, color=colors["lightsalmon"])
   plt.show()
+
 
 main()
