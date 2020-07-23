@@ -60,7 +60,7 @@ def plot(x, bi):
   plt.xlabel("Riqueza")
   plt.ylabel("Probabilidad")
   expvalues = 4 * bi * np.exp(-2*bi) #Para graficar la exponencial
-  histogram = x #Histograma
+  #histogram = x #Histograma
   expplot = plt.plot(bi, expvalues, color=colors["lightsalmon"]) #Exponencial
   plt.show()
 
