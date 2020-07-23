@@ -18,23 +18,29 @@ w = 1
 
 a = np.full(N, alpha)
 b = np.full(N, beta)
+S = np.zeros(T) #Entropía para cada tiempo
+M2 = 5
+bin = 0.1
+M = 10
+
 
 def main():
-    M = 10
-    bins = np.arange(0, 4, 0.1)
+    bins = np.arange(0, 4, bin)
     histogram(bins, M)
-    plot(bins)
+    plot(np.arange(T), S)
+    
 
 
 
-def sim(a, b):
-    for i in range(1, T + 1):
+def sim(a, b, bins, S):
+    for i in range(1, T+1):
         f = np.random.uniform(0, 1, N)
         p = price(a, b, f)
         m = wealth(a, b, p)
         a = f * m
         b = (1 - f) * m / p
-    mw = w * m /(alpha + (beta * p))
+        mw = w * m /(alpha + (beta * p))
+        S[i-1] = entropy(mw, bins, M2)
     return mw
 
 
@@ -48,28 +54,34 @@ def wealth(a, b, p):
     wealth = a + (b * p)
     return wealth
 
-def entropy(p, dp):
-    return np.sum(- p * np.log2(p) * dp)
+def entropy(v, bins, M):
+    h = np.zeros(len(bins)-1)
+    for i in range(M):
+        m, bins = np.histogram(v, bins=bins, density=True)
+        h += m/M
+    return np.sum(np.where(h != 0,  - h * np.log2(h) * bins[1], 0))
 
 def histogram(bins, M):
     h = np.zeros(len(bins)-1)
     for i in range(M):
-        v = sim(a, b)
+        v = sim(a, b, bins, S)
         m, bins = np.histogram(v, bins=bins, density=True)
         h += m/M
     plt.bar(bins[:-1], h, align="edge", width=bins[1],
             ec=colors["cadetblue"], color=colors["powderblue"])
 
 
-def plot(bins):
-    plt.ylim(0, 1)
-    plt.xlim(0, 4)
-    plt.title("T = %.d" %T)
-    plt.xlabel("Riqueza")
-    plt.ylabel("Probabilidad")
-    gamma = ((2/w)**2) * bins * np.exp(-2*bins/w)
-    plt.plot(bins, gamma, color=colors["lightsalmon"])
-    plt.show()
+def gamma(bins):
+    return ((2/w)**2) * bins * np.exp(-2*bins/w)
+    
 
+def plot(x,y):
+    #plt.ylim(0, 1)
+    plt.xlim(0, T)
+    plt.title("Entropía de Shannon")
+    plt.xlabel("Iteración")
+    plt.ylabel("Entropía [bits]")
+    plt.plot (x,y, color=colors["lightsalmon"])
+    plt.show()
 
 main()
