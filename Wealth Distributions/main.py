@@ -21,17 +21,10 @@ b = np.full(N, beta)
 
 def main():
     M = 10
-    heights = np.zeros(39)
     bins = np.arange(0, 4, 0.1)
+    histogram(bins, M)
+    plot(bins)
 
-    for i in range(M):
-        print(i)
-        wealth = sim(a, b)
-        n, bins, aux = plt.hist(wealth, bins=bins, density=True, stacked=True)
-        plot(aux, bins)
-        heights = heights + (n / M)
-    br = plt.bar(bins[:-1], heights, align="edge", width=0.1, ec=colors["cadetblue"], color=colors["powderblue"])
-    plot(br, bins)
 
 
 def sim(a, b):
@@ -55,16 +48,28 @@ def wealth(a, b, p):
     wealth = a + (b * p)
     return wealth
 
+def entropy(p, dp):
+    return np.sum(- p * np.log2(p) * dp)
 
-def plot(x, bi):
-  plt.ylim(0,1)
-  plt.xlim(0,4)
-  plt.title("T = %.d" %T)
-  plt.xlabel("Riqueza")
-  plt.ylabel("Probabilidad")
-  expvalues = 4 * bi * np.exp(-2*bi)
-  plt.plot(bi, expvalues, color=colors["lightsalmon"])
-  plt.show()
+def histogram(bins, M):
+    h = np.zeros(len(bins)-1)
+    for i in range(M):
+        v = sim(a, b)
+        m, bins = np.histogram(v, bins=bins, density=True)
+        h += m/M
+    plt.bar(bins[:-1], h, align="edge", width=bins[1],
+            ec=colors["cadetblue"], color=colors["powderblue"])
+
+
+def plot(bins):
+    plt.ylim(0, 1)
+    plt.xlim(0, 4)
+    plt.title("T = %.d" %T)
+    plt.xlabel("Riqueza")
+    plt.ylabel("Probabilidad")
+    gamma = ((2/w)**2) * bins * np.exp(-2*bins/w)
+    plt.plot(bins, gamma, color=colors["lightsalmon"])
+    plt.show()
 
 
 main()
