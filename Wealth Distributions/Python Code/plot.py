@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+from scipy.special import gamma
 import system as s
 
 
@@ -18,14 +19,15 @@ def histogram(N, alpha, beta, T, w, a, b, bins, S, M):
         h += m / M
     plt.bar(bins[:-1], h, align="edge", width=bins[1],
             ec=colors["cadetblue"], color=colors["powderblue"])
+    binscenter = bins[:-1] + 0.5 * bins[1]
+    E = np.sum (bins[1] * h * binscenter)
+    Var = np.sum(bins[1]*binscenter**2 * h) - E**2
+    return E, Var
 
 
-def gamma(bins, w):
-    return ((2 / w) ** 2) * bins * np.exp(-2 * bins / w)
+def gammadistribution(bins, k, theta):
+    return  bins **(k-1) * np.exp(- bins / theta) / (gamma(k)*theta**k)
 
-
-def exponential(bins, theta):
-    return (1 / theta) * np.exp(-bins / theta)
 
 
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
