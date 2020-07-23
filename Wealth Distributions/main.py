@@ -27,7 +27,7 @@ M = 10
 def main():
     bins = np.arange(0, 4, bin)
     histogram(bins, M)
-    plot(np.arange(T), S)
+    plot(bins, exponential(bins, beta))
     
 
 
@@ -41,7 +41,7 @@ def sim(a, b, bins, S):
         b = (1 - f) * m / p
         mw = w * m /(alpha + (beta * p))
         S[i-1] = entropy(mw, bins, M2)
-    return mw
+    return b
 
 
 def price(a, b, f):
@@ -73,11 +73,14 @@ def histogram(bins, M):
 
 def gamma(bins):
     return ((2/w)**2) * bins * np.exp(-2*bins/w)
+
+def exponential(bins, theta):
+    return (1/theta)*np.exp(-bins/theta)
     
 
 def plot(x,y):
-    #plt.ylim(0, 1)
-    plt.xlim(0, T)
+    plt.ylim(0, 1)
+    plt.xlim(0, 4)
     plt.title("Entropía de Shannon")
     plt.xlabel("Iteración")
     plt.ylabel("Entropía [bits]")
