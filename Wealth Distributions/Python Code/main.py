@@ -17,8 +17,9 @@ def main():
     E, Var = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M)
     k = E**2/Var
     theta = Var/E
-    pl.plot(bins, pl.gammadistribution(bins, k, theta), 4, 2.3, "Distribución de riqueza (w=1)", "Riqueza",
-            "Densidad de Probabilidad", "lightsalmon", "Gamma(1,1)")
+    gammastr = "Gamma(" + str(k) + "," + str(theta)+")"
+    pl.plot(bins, pl.gammadistribution(bins, k, theta), 4, 1.0, "Distribución de riqueza (f dist. gaussiana con sigma = 10.00)", "Riqueza",
+            "Densidad de Probabilidad", "lightsalmon", gammastr)
     #s.sim(N, alpha, beta, T, w, a, b, bins, S)
     #pl.plot(range(T), S, T, 1.3, "Entropía de Shannon", "Iteración","Entropía [bits]", "limegreen", "Shannon's Entropy")
 
