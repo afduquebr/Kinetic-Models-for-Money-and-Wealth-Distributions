@@ -1,10 +1,10 @@
 import numpy as np
 
 
-def sim(N, alpha, beta, T, w, a, b, bins, S):
+def sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma):
     for i in range(1, T+1):
         #f = np.random.uniform(0, 1, N)
-        f = blockednormal(0.5,10.0,N)
+        f = blockednormal(mu,sigma,N)
         p = price(a, b, f)
         m = wealth(a, b, p)
         a = f * m

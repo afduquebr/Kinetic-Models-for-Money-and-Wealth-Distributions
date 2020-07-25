@@ -11,21 +11,27 @@ by_hsv = sorted((tuple(mcolors.rgb_to_hsv(mcolors.to_rgba(color)[:3])), name)
 sorted_names = [name for hsv, name in by_hsv]
 
 
-def histogram(N, alpha, beta, T, w, a, b, bins, S, M):
+def histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma):
     h = np.zeros(len(bins) - 1)
     for i in range(M):
-        v = s.sim(N, alpha, beta, T, w, a, b, bins, S)
+        v = s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
         m, bins = np.histogram(v, bins=bins, density=True)
         h += m / M
     plt.bar(bins[:-1], h, align="edge", width=bins[1],
             ec=colors["cadetblue"], color=colors["powderblue"])
+    return h
+
+
+def gamma_parameters(bins,h):
     binscenter = bins[:-1] + 0.5 * bins[1]
-    E = np.sum (bins[1] * h * binscenter)
-    Var = np.sum(bins[1]*binscenter**2 * h) - E**2
-    return E, Var
+    E = np.sum(bins[1] * h * binscenter)
+    Var = np.sum(bins[1] * binscenter ** 2 * h) - E ** 2
+    k = E ** 2 / Var
+    theta = Var / E
+    return k, theta
 
 
-def gammadistribution(bins, k, theta):
+def gamma_distribution(bins, k, theta):
     return  bins **(k-1) * np.exp(- bins / theta) / (gamma(k)*theta**k)
 
 

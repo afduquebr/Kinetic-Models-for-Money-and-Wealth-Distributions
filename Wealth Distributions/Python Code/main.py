@@ -13,14 +13,15 @@ def main():
     b = np.full(N, beta)
     S = np.zeros(T)  # Entropía para cada tiempo
     M = 10
+    mu = 0.5
+    sigma = 0.875
     bins = np.arange(0, 4, 0.1)
-    E, Var = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M)
-    k = E**2/Var
-    theta = Var/E
-    gammastr = "Gamma(" + str(k) + "," + str(theta)+")"
-    pl.plot(bins, pl.gammadistribution(bins, k, theta), 4, 1.0, "Distribución de riqueza (f dist. gaussiana con sigma = 10.00)", "Riqueza",
-            "Densidad de Probabilidad", "lightsalmon", gammastr)
-    #s.sim(N, alpha, beta, T, w, a, b, bins, S)
+    h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
+    k, theta = pl.gamma_parameters(bins, h)
+    gammastr = "Gamma(" + str(round(k,2)) + "," + str(round(theta,2))+")"
+    pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 1, "Distribución de riqueza (f dist. normal con \u03C3 = 0.875)",
+            "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
+    #s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
     #pl.plot(range(T), S, T, 1.3, "Entropía de Shannon", "Iteración","Entropía [bits]", "limegreen", "Shannon's Entropy")
 
 
