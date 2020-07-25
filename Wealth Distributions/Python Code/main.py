@@ -3,6 +3,7 @@ import system as s
 import plot as pl
 
 
+
 def main():
     N = 1000  # N es el número de agentes
     alpha = 1  # alpha es el dinero promedio
@@ -14,14 +15,18 @@ def main():
     S = np.zeros(T)  # Entropía para cada tiempo
     M = 10
     mu = 0.5
-    sigma = 1
+    sigma = 0.01
     bins = np.arange(0, 4, 0.1)
 
     # Generate Uniform Histogram
-    h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
-    k, theta = pl.gamma_parameters(bins, h)
-    gammastr = "Gamma(" + str(round(k,2)) + "," + str(round(theta,2))+")"
-    pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 1, "Distribución de riqueza (f dist. uniforme)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
+    #h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
+    #k, theta = pl.gamma_parameters(bins, h)
+    #gammastr = "Gamma(" + str(round(k,2)) + "," + str(round(theta,2))+")"
+    #pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 1, "Distribución de riqueza (f dist. uniforme)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
+
+    gini, gini_plot = pl.gini(s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma), N, w)
+    pl.gini_plot(gini, gini_plot)
+
 
     # Generate Normal Histogram
     #h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
