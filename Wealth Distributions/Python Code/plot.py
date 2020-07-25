@@ -35,6 +35,17 @@ def gamma_distribution(bins, k, theta):
     return  bins **(k-1) * np.exp(- bins / theta) / (gamma(k)*theta**k)
 
 
+def read_txt(filename, rows):
+    file = open(filename, 'r')
+    lines = file.readlines()
+    data = list()
+    for i in range(rows):
+        aux = list()
+        for line in lines:
+            aux.append(float(line.split()[i]))
+        data.append(aux)
+    return data
+
 
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
     plt.ylim(0, ymax)
