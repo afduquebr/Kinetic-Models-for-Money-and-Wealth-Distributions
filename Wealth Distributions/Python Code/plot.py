@@ -47,12 +47,31 @@ def read_txt(filename, rows):
     return data
 
 
+def gini(mw, N, w):
+    mw_aux = np.sort(mw)
+    maux = np.zeros(100)
+    sum = 0
+    fair_area = 100*100/2
+    for i in range(1,N+1):
+        sum += mw_aux[i-1]*100/(w*N)
+        if (i%(0.01*N) == 0):
+            j = i/10
+            maux[int(j)-1] += sum
+    gini = (fair_area - np.sum(maux))/fair_area
+    return round(gini, 3), maux
+
+def gini_plot(gini, giniplot):
+    string = "Medida de desigualdad (g=" + str(gini) + ")"
+    gin = plt.plot(range(1, 101), range(1, 101), '--', color=colors["firebrick"], label="Curva de igualdad perfecta")
+    plot(range(1, 101), giniplot, 100, 100, string, "Porcentaje de población", "Porcentaje de riqueza", "royalblue",
+            "Curva de Lorentz")
+
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
     plt.ylim(0, ymax)
     plt.xlim(0, xmax)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plot =  plt.plot(x, y, color=colors[color], label=legend)
-    plt.legend(handles=plot)
+    plot = plt.plot(x, y, color=colors[color], label=legend)
+    plt.legend()
     plt.show()
