@@ -69,6 +69,9 @@ def gini_plot(gini, giniplot):
 def sigma_mu_gini(x,y):
     sm_gini = plt.plot(x, np.full(len(x), y), '--', color=colors["indianred"], label="Districuión uniforme")
 
+def alpha_beta_sigma(x,y):
+    ab_sigma = plt.plot(x, np.full(len(x), y), '--', color=colors["indianred"], label="Districuión uniforme")
+
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
     plt.ylim(0, ymax)
     plt.xlim(0, xmax)
