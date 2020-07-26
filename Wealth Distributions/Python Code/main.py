@@ -38,12 +38,12 @@ def main():
 
 
     # Generate Gini vs Sigma and Mu graphs
-    gini_sigma = pl.read_txt("gini_sigma.txt", 2)
-    gini_mu = pl.read_txt("gini_mu.txt", 2)
-    pl.sigma_mu_gini(gini_sigma[0],0.36)
-    pl.plot(gini_sigma[0], gini_sigma[1], 1.6, 0.5, " ", "\u03C3", "Coeficiente de Gini", "coral", "Distribución Normal con \u03BC = 0.5")
-    pl.sigma_mu_gini(gini_mu[0], 0.36)
-    pl.plot(gini_mu[0], gini_mu[1], 1.1, 0.5, " ", "\u03BC", "Coeficiente de Gini", "coral", "Distribución Normal con \u03C3 = 0.125")
+    #gini_sigma = pl.read_txt("gini_sigma.txt", 2)
+    #gini_mu = pl.read_txt("gini_mu.txt", 2)
+    #pl.sigma_mu_gini(gini_sigma[0],0.36)
+    #pl.plot(gini_sigma[0], gini_sigma[1], 1.6, 0.5, " ", "\u03C3", "Coeficiente de Gini", "coral", "Distribución Normal con \u03BC = 0.5")
+    #pl.sigma_mu_gini(gini_mu[0], 0.36)
+    #pl.plot(gini_mu[0], gini_mu[1], 1.1, 0.5, " ", "\u03BC", "Coeficiente de Gini", "coral", "Distribución Normal con \u03C3 = 0.125")
 
     # Generate Normal Histogram
     #h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
@@ -52,10 +52,14 @@ def main():
     #pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 1, "Distribución de riqueza (f dist. normal con \u03C3 = 1.0)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
 
 
-    # Generate kappa and theta graphs
-    #fgauss = pl.read_txt("fgauss-sigma-k-theta.txt",3)
-    #pl.plot(fgauss[0], fgauss[1], 10.2, 22, " ", "\u03C3", "\u03BA", "lightcoral", "\u03BA(\u03C3)")
-    #pl.plot(fgauss[0], fgauss[2], 10.2, 0.5, " ", "\u03C3", "\u03B8", "tomato", "\u03B8(\u03C3)")
+    # Generate alpha and beta graphs
+    fgauss = pl.read_txt("fgauss-sigma-k-theta.txt", 3)
+    for i in range(len(fgauss[2])):
+        fgauss[2][i] = 1/fgauss[2][i]
+    pl.alpha_beta_sigma(fgauss[0], 2)
+    pl.plot(fgauss[0], fgauss[1], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03B1", "coral", "Distribución normal con \u03BC = 0.5")
+    pl.alpha_beta_sigma(fgauss[0], 2)
+    pl.plot(fgauss[0], fgauss[2], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03B2", "coral", "Distribución normal con \u03BC = 0.5")
 
 
     # Generate Entropy
