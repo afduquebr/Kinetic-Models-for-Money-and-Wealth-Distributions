@@ -58,7 +58,7 @@ def gini(mw, N, w):
             j = i/10
             maux[int(j)-1] += sum
     gini = (fair_area - np.sum(maux))/fair_area
-    return round(gini, 3), maux
+    return gini, maux
 
 def gini_plot(gini, giniplot):
     string = "Medida de desigualdad (g=" + str(gini) + ")"

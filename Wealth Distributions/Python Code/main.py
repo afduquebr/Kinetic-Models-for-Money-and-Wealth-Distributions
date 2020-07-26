@@ -13,10 +13,11 @@ def main():
     a = np.full(N, alpha)
     b = np.full(N, beta)
     S = np.zeros(T)  # Entropía para cada tiempo
-    M = 10
+    M = 5
     mu = 0.5
-    sigma = 0.1
+    sigma = 0.3
     bins = np.arange(0, 4, 0.1)
+
 
     # Generate Uniform Histogram
     #h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
@@ -26,11 +27,14 @@ def main():
 
 
     # Generate Gini Coefficient
-    mw = np.zeros(N)
+    gini_plot = np.zeros(100)
+    gini = 0
     for i in range(M):
-        mw += s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)/M
-    gini, gini_plot = pl.gini(mw, N, w)
-    pl.gini_plot(gini, gini_plot)
+        mw = s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
+        gini_aux, gini_plot_aux = pl.gini(mw, N, w)
+        gini += gini_aux/M
+        gini_plot += gini_plot_aux/M
+    pl.gini_plot(round(gini, 2), gini_plot)
 
 
     # Generate Normal Histogram
