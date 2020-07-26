@@ -66,6 +66,9 @@ def gini_plot(gini, giniplot):
     plot(range(1, 101), giniplot, 100, 100, string, "Porcentaje de población", "Porcentaje de riqueza", "royalblue",
             "Curva de Lorentz")
 
+def sigma_mu_gini(x,y):
+    sm_gini = plt.plot(x, np.full(len(x), y), '--', color=colors["indianred"], label="Districuión uniforme")
+
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
     plt.ylim(0, ymax)
     plt.xlim(0, xmax)
