@@ -13,7 +13,7 @@ def main():
     b = np.full(N, beta)
     S = np.zeros(T)  # Entropía para cada tiempo
     M = 5
-    mu = 0.5
+    mu = 0.8
     sigma = 0.5
     bins = np.arange(0, 4, 0.1)
 
