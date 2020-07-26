@@ -13,8 +13,8 @@ def main():
     b = np.full(N, beta)
     S = np.zeros(T)  # Entropía para cada tiempo
     M = 5
-    mu = 0.8
-    sigma = 0.5
+    mu = 0.5
+    sigma = 0.125
     bins = np.arange(0, 4, 0.1)
 
 
@@ -26,23 +26,26 @@ def main():
 
 
     # Generate Gini Coefficient
-    gini_plot = np.zeros(100)
-    gini = 0
-    for i in range(M):
-        mw = s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
-        gini_aux, gini_plot_aux = pl.gini(mw, N, w)
-        gini += gini_aux/M
-        gini_plot += gini_plot_aux/M
-    pl.gini_plot(round(gini, 2), gini_plot)
-    print(gini)
+    #gini_plot = np.zeros(100)
+    #gini = 0
+    #for i in range(M):
+        #mw = s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
+        #gini_aux, gini_plot_aux = pl.gini(mw, N, w)
+        #gini += gini_aux/M
+        #gini_plot += gini_plot_aux/M
+    #pl.gini_plot(round(gini, 2), gini_plot)
+    #print(gini)
 
     # Generate Gini vs Sigma and Mu graphs
     #gini_sigma = pl.read_txt("gini_sigma.txt", 2)
-    #gini_mu = pl.read_txt("gini_mu.txt", 2)
-    #pl.sigma_mu_gini(gini_sigma[0],0.36)
+    #gini_mu = pl.read_txt("gini_mu.txt", 5)
+    #pl.sigma_mu_gini(gini_sigma[0],0.36, "indianred", "Distribución Uniforme")
     #pl.plot(gini_sigma[0], gini_sigma[1], 1.6, 0.5, " ", "\u03C3", "Coeficiente de Gini", "coral", "Distribución Normal con \u03BC = 0.5")
-    #pl.sigma_mu_gini(gini_mu[0], 0.36)
-    #pl.plot(gini_mu[0], gini_mu[1], 1.1, 0.5, " ", "\u03BC", "Coeficiente de Gini", "coral", "Distribución Normal con \u03C3 = 0.125")
+    #pl.sigma_mu_gini(gini_mu[0], gini_mu[1], "lightpink", "Distribución Normal con \u03C3 = 0.125")
+    #pl.sigma_mu_gini(gini_mu[0], gini_mu[2], "lightcoral", "Distribución Normal con \u03C3 = 0.25")
+    #pl.sigma_mu_gini(gini_mu[0], gini_mu[3], "palevioletred", "Distribución Normal con \u03C3 = 0.375")
+    #pl.sigma_mu_gini(gini_mu[0], gini_mu[4], "indianred", "Distribución Normal con \u03C3 = 0.5")
+    #pl.plot(gini_mu[0], 0.36, 1, 0.6, " ", "\u03BC", "Coeficiente de Gini", "brown", "Distribución Uniforme")
 
     # Generate Normal Histogram
     #h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
