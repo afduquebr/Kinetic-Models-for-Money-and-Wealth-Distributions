@@ -66,18 +66,18 @@ def gini_plot(gini, giniplot):
     plot(range(1, 101), giniplot, 100, 100, string, "Porcentaje de población", "Porcentaje de riqueza", "royalblue",
             "Curva de Lorentz")
 
-def sigma_mu_gini(x,y):
-    sm_gini = plt.plot(x, np.full(len(x), y), '--', color=colors["indianred"], label="Districuión uniforme")
+def sigma_mu_gini(x,y, color, legend):
+    plt.plot(x, np.full(len(x), y), color=colors[color], label=legend)
 
 def alpha_beta_sigma(x,y):
     ab_sigma = plt.plot(x, np.full(len(x), y), '--', color=colors["indianred"], label="Districuión uniforme")
 
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
-    plt.ylim(0, ymax)
-    plt.xlim(0, xmax)
+    plt.ylim(0.05, ymax)
+    plt.xlim(0.15, xmax)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plot = plt.plot(x, y, color=colors[color], label=legend)
+    plot = plt.plot(x, y, "--", color=colors[color], label=legend)
     plt.legend()
     plt.show()
