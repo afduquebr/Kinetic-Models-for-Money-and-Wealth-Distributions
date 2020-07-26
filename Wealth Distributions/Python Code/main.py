@@ -52,15 +52,17 @@ def main():
     #pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 1, "Distribución de riqueza (f dist. normal con \u03C3 = 1.0)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
 
 
-    # Generate alpha and beta graphs
-    fgauss = pl.read_txt("fgauss-sigma-k-theta.txt", 3)
-    for i in range(len(fgauss[2])):
-        fgauss[2][i] = 1/fgauss[2][i]
-    pl.alpha_beta_sigma(fgauss[0], 2)
-    pl.plot(fgauss[0], fgauss[1], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03B1", "coral", "Distribución normal con \u03BC = 0.5")
-    pl.alpha_beta_sigma(fgauss[0], 2)
-    pl.plot(fgauss[0], fgauss[2], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03B2", "coral", "Distribución normal con \u03BC = 0.5")
-
+    # Generate alpha and beta graphs in terms of sigma and mu
+    #fgauss_sigma = pl.read_txt("fgauss-sigma-k-theta.txt", 3)
+    #for i in range(len(fgauss_sigma[2])):
+        #fgauss_sigma[2][i] = 1/fgauss_sigma[2][i]
+    #pl.alpha_beta_sigma(fgauss_sigma[0], 2)
+    #pl.plot(fgauss_sigma[0], fgauss_sigma[1], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03B1", "coral", "Distribución normal con \u03BC = 0.5")
+    #pl.alpha_beta_sigma(fgauss_sigma[0], 2)
+    #pl.plot(fgauss_sigma[0], fgauss_sigma[2], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03B2", "coral", "Distribución normal con \u03BC = 0.5")
+    #fgauss_mu = pl.read_txt("fgauss-mu-alpha-beta.txt", 3)
+    #pl.plot(fgauss_mu[0], fgauss_mu[1], 0.9, 22, "\u03C9 = 1", "\u03BC", "\u03B1", "coral", "Distribución normal con \u03C3 = 0.125")
+    #pl.plot(fgauss_mu[0], fgauss_mu[2], 0.9, 22, "\u03C9 = 1", "\u03BC", "\u03B2", "coral", "Distribución normal con \u03C3 = 0.125")
 
     # Generate Entropy
     #s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
