@@ -3,7 +3,6 @@ import system as s
 import plot as pl
 
 
-
 def main():
     N = 1000  # N es el número de agentes
     alpha = 1  # alpha es el dinero promedio
@@ -15,7 +14,7 @@ def main():
     S = np.zeros(T)  # Entropía para cada tiempo
     M = 5
     mu = 0.5
-    sigma = 1.4
+    sigma = 0.5
     bins = np.arange(0, 4, 0.1)
 
 
@@ -27,15 +26,15 @@ def main():
 
 
     # Generate Gini Coefficient
-    #gini_plot = np.zeros(100)
-    #gini = 0
-    #for i in range(M):
-        #mw = s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
-        #gini_aux, gini_plot_aux = pl.gini(mw, N, w)
-        #gini += gini_aux/M
-        #gini_plot += gini_plot_aux/M
-    #pl.gini_plot(round(gini, 2), gini_plot)
-
+    gini_plot = np.zeros(100)
+    gini = 0
+    for i in range(M):
+        mw = s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
+        gini_aux, gini_plot_aux = pl.gini(mw, N, w)
+        gini += gini_aux/M
+        gini_plot += gini_plot_aux/M
+    pl.gini_plot(round(gini, 2), gini_plot)
+    print(gini)
 
     # Generate Gini vs Sigma and Mu graphs
     #gini_sigma = pl.read_txt("gini_sigma.txt", 2)
