@@ -73,8 +73,8 @@ def alpha_beta_sigma(x,y):
     ab_sigma = plt.plot(x, np.full(len(x), y), '--', color=colors["indianred"], label="Districuión uniforme")
 
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
-    plt.ylim(0.05, ymax)
-    plt.xlim(0.15, xmax)
+    plt.ylim(0, ymax)
+    plt.xlim(0, xmax)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
