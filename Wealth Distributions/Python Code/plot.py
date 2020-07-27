@@ -78,6 +78,6 @@ def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plot = plt.plot(x, y, "--", color=colors[color], label=legend)
+    plot = plt.plot(x, y, color=colors[color], label=legend)
     plt.legend()
     plt.show()
