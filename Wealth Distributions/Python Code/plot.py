@@ -80,9 +80,9 @@ def sigma_mu_gini(x,y, color, legend):
 def alpha_beta_sigma(x,y):
     ab_sigma = plt.plot(x, np.full(len(x), y), '--', color=colors["indianred"], label="Districuión uniforme")
 
-def plot(x, y, xmin, xmax, ymax, title, xlabel, ylabel, color, legend):
+def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
     plt.ylim(0, ymax)
-    plt.xlim(xmin, xmax)
+    plt.xlim(0, xmax)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
