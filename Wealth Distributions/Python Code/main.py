@@ -12,7 +12,7 @@ def main():
     a = np.full(N, alpha)
     b = np.full(N, beta)
     S = np.zeros(T)  # Entropía para cada tiempo
-    M = 20
+    M = 10
     mu = 0.5
     sigma = 0.125
     bins = np.arange(0, 4, 0.1)
@@ -21,8 +21,8 @@ def main():
     # Generate Uniform Histogram
     #h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
     #k, theta = pl.gamma_parameters(bins, h)
-    #gammastr = "Gamma(" + str(round(k,2)) + "," + str(round(theta,2))+")"
-    #pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 0.25, "Distribución de riqueza (f dist. uniforme)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
+    #gammastr = "Gamma(" + str(round(k, 2)) + "," + str(round(theta, 2))+")"
+    #pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 1, "Distribución de Riqueza (f dist. uniforme)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
 
 
     # Generate Gini Coefficient
