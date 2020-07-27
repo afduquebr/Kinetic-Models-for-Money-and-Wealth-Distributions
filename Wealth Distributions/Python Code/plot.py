@@ -42,6 +42,8 @@ def gamma_distribution(bins, k, theta):
 def normal_distribution(bins, mu, sigma):
     return (1/(sigma*np.sqrt(2*np.pi))) * np.exp(-((bins - mu)**2/(2*(sigma**2))))
 
+def straight_line(bins, m, b):
+    return m*bins + b
 
 def read_txt(filename, rows):
     file = open(filename, 'r')
@@ -79,6 +81,9 @@ def sigma_mu_gini(x,y, color, legend):
 
 def alpha_beta_sigma(x,y):
     ab_sigma = plt.plot(x, np.full(len(x), y), '--', color=colors["indianred"], label="Districuión uniforme")
+
+def kappa_theta(x, y, legend):
+    plt.plot(x, y, 'o', color=colors["dodgerblue"], label=legend)
 
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
     plt.ylim(0, ymax)
