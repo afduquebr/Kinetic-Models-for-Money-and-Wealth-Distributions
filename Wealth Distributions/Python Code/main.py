@@ -19,10 +19,10 @@ def main():
 
 
     # Generate Uniform Histogram
-    #h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
-    #k, theta = pl.gamma_parameters(bins, h)
-    #gammastr = "Gamma(" + str(round(k,2)) + "," + str(round(theta,2))+")"
-    #pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 1, "Distribución de riqueza (f dist. uniforme)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
+    h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
+    k, theta = pl.gamma_parameters(bins, h)
+    gammastr = "Gamma(" + str(round(k,2)) + "," + str(round(theta,2))+")"
+    pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 0.8, "Distribución de riqueza (f dist. uniforme)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
 
 
     # Generate Gini Coefficient
@@ -36,6 +36,7 @@ def main():
     #pl.gini_plot(round(gini, 2), gini_plot)
     #print(gini)
 
+
     # Generate Gini vs Sigma and Mu graphs
     #gini_sigma = pl.read_txt("gini_sigma.txt", 2)
     #gini_mu = pl.read_txt("gini_mu.txt", 5)
@@ -46,6 +47,7 @@ def main():
     #pl.sigma_mu_gini(gini_mu[0], gini_mu[3], "palevioletred", "Distribución Normal con \u03C3 = 0.375")
     #pl.sigma_mu_gini(gini_mu[0], gini_mu[4], "indianred", "Distribución Normal con \u03C3 = 0.5")
     #pl.plot(gini_mu[0], 0.36, 1, 0.6, " ", "\u03BC", "Coeficiente de Gini", "brown", "Distribución Uniforme")
+
 
     # Generate Normal Histogram
     #h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
@@ -66,18 +68,19 @@ def main():
     #pl.plot(fgauss_mu[0], fgauss_mu[1], 0.9, 22, "\u03C9 = 1", "\u03BC", "\u03BA", "coral", "Distribución normal con \u03C3 = 0.125")
     #pl.plot(fgauss_mu[0], fgauss_mu[2], 0.9, 22, "\u03C9 = 1", "\u03BC", "\u03B8", "coral", "Distribución normal con \u03C3 = 0.125")
 
+
     # Generate Entropy
     #s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
     #pl.plot(range(T), S, T, 1.3, " ", "Iteración","Entropía [bits]", "indianred", "Entropía diferencial")
 
+
     # Generate Total Wealth and Price histograms
-    wealth_price = pl.read_txt("TW-P-S-5prom.txt", 3)
-    bins1 = np.arange(1.98, 2.02, 0.001)
-    m1 = pl.histograux(bins1, wealth_price[1])
-    pl.plot(bins1, pl.normal_distribution(bins1, 2.00004, 0.00597), 1.98, 2.02, 75, " ", "Riqueza Total", "Densidad de Probabilidad", "lightsalmon", "\u03BC = 2.00004,\u03C3 = 0.00597")
-    bins2 = np.arange(0.98, 1.02, 0.001)
-    m2 = pl.histograux(bins2, wealth_price[2])
-    pl.plot(bins2, pl.normal_distribution(bins2, 1.00004, 0.00597), 0.98, 1.02, 75, " ", "Precio", "Densidad de Probabilidad", "lightsalmon",
-            "\u03BC = 1.00004,\u03C3 = 0.00597")
+    #wealth_price = pl.read_txt("TW-P-S-5prom.txt", 3)
+    #bins1 = np.arange(1.98, 2.02, 0.001)
+    #pl.histograux(bins1, wealth_price[1])
+    #pl.plot(bins1, pl.normal_distribution(bins1, 2.00004, 0.00597), 1.98, 2.02, 75, " ", "Riqueza Total", "Densidad de Probabilidad", "lightsalmon", "\u03BC = 2.00004,\u03C3 = 0.00597")
+    #bins2 = np.arange(0.98, 1.02, 0.001)
+    #pl.histograux(bins2, wealth_price[2])
+    #pl.plot(bins2, pl.normal_distribution(bins2, 1.00004, 0.00597), 0.98, 1.02, 75, " ", "Precio", "Densidad de Probabilidad", "lightsalmon", "\u03BC = 1.00004,\u03C3 = 0.00597")
 
 main()
