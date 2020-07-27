@@ -86,8 +86,8 @@ def kappa_theta(x, y, legend):
     plt.plot(x, y, 'o', color=colors["dodgerblue"], label=legend)
 
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
-    plt.ylim(0, ymax)
-    plt.xlim(0, xmax)
+    plt.ylim(1.1, ymax)
+    plt.xlim(6500, xmax)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
