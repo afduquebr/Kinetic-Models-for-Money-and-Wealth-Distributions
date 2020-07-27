@@ -70,5 +70,14 @@ def main():
     #s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
     #pl.plot(range(T), S, T, 1.3, " ", "Iteración","Entropía [bits]", "indianred", "Entropía diferencial")
 
+    # Generate Total Wealth and Price histograms
+    wealth_price = pl.read_txt("TW-P-S-5prom.txt", 3)
+    bins1 = np.arange(1.98, 2.02, 0.001)
+    m1 = pl.histograux(bins1, wealth_price[1])
+    pl.plot(bins1, pl.normal_distribution(bins1, 2.00004, 0.00597), 1.98, 2.02, 75, " ", "Riqueza Total", "Densidad de Probabilidad", "lightsalmon", "\u03BC = 2.00004,\u03C3 = 0.00597")
+    bins2 = np.arange(0.98, 1.02, 0.001)
+    m2 = pl.histograux(bins2, wealth_price[2])
+    pl.plot(bins2, pl.normal_distribution(bins2, 1.00004, 0.00597), 0.98, 1.02, 75, " ", "Precio", "Densidad de Probabilidad", "lightsalmon",
+            "\u03BC = 1.00004,\u03C3 = 0.00597")
 
 main()
