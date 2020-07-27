@@ -21,6 +21,11 @@ def histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma):
             ec=colors["cadetblue"], color=colors["powderblue"])
     return h
 
+def histograux(bins, v):
+    m, bins = np.histogram(v, bins=bins, density=True)
+    plt.bar(bins[:-1], m, align="edge", width=0.001,
+            ec=colors["cadetblue"], color=colors["powderblue"])
+    return m
 
 def gamma_parameters(bins,h):
     binscenter = bins[:-1] + 0.5 * bins[1]
@@ -33,6 +38,9 @@ def gamma_parameters(bins,h):
 
 def gamma_distribution(bins, k, theta):
     return  bins **(k-1) * np.exp(- bins / theta) / (gamma(k)*theta**k)
+
+def normal_distribution(bins, mu, sigma):
+    return (1/(sigma*np.sqrt(2*np.pi))) * np.exp(-((bins - mu)**2/(2*(sigma**2))))
 
 
 def read_txt(filename, rows):
@@ -72,9 +80,9 @@ def sigma_mu_gini(x,y, color, legend):
 def alpha_beta_sigma(x,y):
     ab_sigma = plt.plot(x, np.full(len(x), y), '--', color=colors["indianred"], label="Districuión uniforme")
 
-def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
+def plot(x, y, xmin, xmax, ymax, title, xlabel, ylabel, color, legend):
     plt.ylim(0, ymax)
-    plt.xlim(0, xmax)
+    plt.xlim(xmin, xmax)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
