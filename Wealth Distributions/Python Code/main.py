@@ -7,7 +7,7 @@ def main():
     N = 1000  # N es el número de agentes
     alpha = 1  # alpha es el dinero promedio
     beta = 1  # beta es la cantidad de bienes promedio
-    T = 10 * N  # Tiempo de evolución
+    T = 20 * N  # Tiempo de evolución
     w = 1
     a = np.full(N, alpha)
     b = np.full(N, beta)
@@ -71,6 +71,9 @@ def main():
 
     # Generate Entropy
     #s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
+    #entropy = open('entropy.txt', 'w')
+    #for i in range(1,T+1):
+        #entropy.write('%d %.6f \n' %(i, S[i-1]))
     #pl.plot(range(T), S, T, 1.3, " ", "Iteración","Entropía [bits]", "indianred", "Entropía diferencial")
 
 
@@ -94,5 +97,10 @@ def main():
     #pl.kappa_theta(kappa_theta[0], kappa_theta[2], "Relación entre \u03B8 y \u03C9")
     #pl.plot(kappa_theta[0], pl.straight_line(np.arange(0.5, 5.5, 0.5), 0.49366, 0.00526), 5.5, 3, " ", "\u03C9", "1/\u03B8", "skyblue", "Ajuste Lineal")
 
+    # Equilibrium Time
+    S = pl.read_txt('entropy.txt', 2)
+    pl.sigma_mu_gini(S[0], 1.137307083, "orange", "Valor mínimo")
+    pl.sigma_mu_gini(S[0], 1.283218639, "saddlebrown", "Valor máximo")
+    pl.plot(S[0], S[1], T, 1.35, " ", "Iteración", "Entropía [bits]", "indianred", "Entropía diferencial")
 
 main()
