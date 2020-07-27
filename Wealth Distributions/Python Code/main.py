@@ -55,20 +55,20 @@ def main():
 
 
     # Generate alpha and beta graphs in terms of sigma and mu
-    #fgauss_sigma = pl.read_txt("fgauss-sigma-k-theta.txt", 3)
+    #fgauss_sigma = pl.read_txt("fgauss-sigma-alpha-beta.txt", 3)
     #for i in range(len(fgauss_sigma[2])):
         #fgauss_sigma[2][i] = 1/fgauss_sigma[2][i]
     #pl.alpha_beta_sigma(fgauss_sigma[0], 2)
-    #pl.plot(fgauss_sigma[0], fgauss_sigma[1], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03B1", "coral", "Distribución normal con \u03BC = 0.5")
+    #pl.plot(fgauss_sigma[0], fgauss_sigma[1], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03BA", "coral", "Distribución normal con \u03BC = 0.5")
     #pl.alpha_beta_sigma(fgauss_sigma[0], 2)
-    #pl.plot(fgauss_sigma[0], fgauss_sigma[2], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03B2", "coral", "Distribución normal con \u03BC = 0.5")
+    #pl.plot(fgauss_sigma[0], fgauss_sigma[2], 10.2, 22, "\u03C9 = 1", "\u03C3", "\u03B8", "coral", "Distribución normal con \u03BC = 0.5")
     #fgauss_mu = pl.read_txt("fgauss-mu-alpha-beta.txt", 3)
-    #pl.plot(fgauss_mu[0], fgauss_mu[1], 0.9, 22, "\u03C9 = 1", "\u03BC", "\u03B1", "coral", "Distribución normal con \u03C3 = 0.125")
-    #pl.plot(fgauss_mu[0], fgauss_mu[2], 0.9, 22, "\u03C9 = 1", "\u03BC", "\u03B2", "coral", "Distribución normal con \u03C3 = 0.125")
+    #pl.plot(fgauss_mu[0], fgauss_mu[1], 0.9, 22, "\u03C9 = 1", "\u03BC", "\u03BA", "coral", "Distribución normal con \u03C3 = 0.125")
+    #pl.plot(fgauss_mu[0], fgauss_mu[2], 0.9, 22, "\u03C9 = 1", "\u03BC", "\u03B8", "coral", "Distribución normal con \u03C3 = 0.125")
 
     # Generate Entropy
-    s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
-    pl.plot(range(T), S, T, 1.3, " ", "Iteración","Entropía [bits]", "indianred", "Entropía diferencial")
+    #s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
+    #pl.plot(range(T), S, T, 1.3, " ", "Iteración","Entropía [bits]", "indianred", "Entropía diferencial")
 
 
 main()
