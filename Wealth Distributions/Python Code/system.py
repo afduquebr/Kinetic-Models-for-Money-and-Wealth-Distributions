@@ -9,8 +9,8 @@ def sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma):
         m = wealth(a, b, p)
         a = f * m
         b = (1 - f) * m / p
-        mw = w * m /(alpha + (beta * p))
-        S[i-1] = entropy(mw, bins)
+        #mw = w * m /(alpha + (beta * p))
+        #S[i-1] = entropy(mw, bins)
     mw = w * m /(alpha + (beta * p))
     return mw
 
