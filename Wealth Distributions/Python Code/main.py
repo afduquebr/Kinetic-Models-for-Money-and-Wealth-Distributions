@@ -7,22 +7,22 @@ def main():
     N = 1000  # N es el número de agentes
     alpha = 1  # alpha es el dinero promedio
     beta = 1  # beta es la cantidad de bienes promedio
-    T = 20 * N  # Tiempo de evolución
+    T = 10 * N  # Tiempo de evolución
     w = 1
     a = np.full(N, alpha)
     b = np.full(N, beta)
     S = np.zeros(T)  # Entropía para cada tiempo
-    M = 10
+    M = 20
     mu = 0.5
     sigma = 0.125
     bins = np.arange(0, 4, 0.1)
 
 
     # Generate Uniform Histogram
-    h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
-    k, theta = pl.gamma_parameters(bins, h)
-    gammastr = "Gamma(" + str(round(k,2)) + "," + str(round(theta,2))+")"
-    pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 0.8, "Distribución de riqueza (f dist. uniforme)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
+    #h = pl.histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma)
+    #k, theta = pl.gamma_parameters(bins, h)
+    #gammastr = "Gamma(" + str(round(k,2)) + "," + str(round(theta,2))+")"
+    #pl.plot(bins, pl.gamma_distribution(bins, k, theta), 4, 0.25, "Distribución de riqueza (f dist. uniforme)", "Riqueza", "Densidad de Probabilidad", "lightsalmon", gammastr)
 
 
     # Generate Gini Coefficient
