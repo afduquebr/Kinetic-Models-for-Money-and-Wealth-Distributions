@@ -15,6 +15,7 @@ def sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma):
     return mw
 
 
+
 def price(a, b, f):
     p = np.dot((1 - f), a)
     q = np.dot(f, b)
