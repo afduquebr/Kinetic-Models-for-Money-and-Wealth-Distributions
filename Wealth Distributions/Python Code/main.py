@@ -7,12 +7,12 @@ def main():
     N = 1000  # N es el número de agentes
     alpha = 1  # alpha es el dinero promedio
     beta = 1  # beta es la cantidad de bienes promedio
-    T = 10 * N  # Tiempo de evolución
+    T = 20 * N  # Tiempo de evolución
     w = 1
     a = np.full(N, alpha)
     b = np.full(N, beta)
     S = np.zeros(T)  # Entropía para cada tiempo
-    M = 5
+    M = 10
     mu = 0.5
     sigma = 0.125
     bins = np.arange(0, 4, 0.1)
@@ -67,8 +67,8 @@ def main():
     #pl.plot(fgauss_mu[0], fgauss_mu[2], 0.9, 22, "\u03C9 = 1", "\u03BC", "\u03B2", "coral", "Distribución normal con \u03C3 = 0.125")
 
     # Generate Entropy
-    #s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
-    #pl.plot(range(T), S, T, 1.3, " ", "Iteración","Entropía [bits]", "indianred", "Entropía de Shannon")
+    s.sim(N, alpha, beta, T, w, a, b, bins, S, mu, sigma)
+    pl.plot(range(T), S, T, 1.3, " ", "Iteración","Entropía [bits]", "indianred", "Entropía diferencial")
 
 
 main()
