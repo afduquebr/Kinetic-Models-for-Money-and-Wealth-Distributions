@@ -7,7 +7,7 @@ def main():
     N = 1000  # N es el número de agentes
     alpha = 1  # alpha es el dinero promedio
     beta = 1  # beta es la cantidad de bienes promedio
-    T = 20 * N  # Tiempo de evolución
+    T = 10 * N  # Tiempo de evolución
     w = 1
     a = np.full(N, alpha)
     b = np.full(N, beta)
@@ -88,19 +88,19 @@ def main():
 
 
     #Generate Kappa and Theta vs Alpha, Beta and Omega figures
-    #kappa_theta = pl.read_txt("omega_kappa_theta.txt", 3)
+    #kappa_theta = pl.read_txt("beta_kappa_theta.txt", 3)
     #Kappa
     #pl.plot(kappa_theta[0], kappa_theta[1], 5.5, 1.5, " ", "\u03B2", "\u03BA", "steelblue", "Relación entre \u03BA y \u03B2")
     #Theta
     #for i in range(len(kappa_theta[2])):
         #kappa_theta[2][i] = 1/kappa_theta[2][i]
-    #pl.kappa_theta(kappa_theta[0], kappa_theta[2], "Relación entre \u03B8 y \u03C9")
-    #pl.plot(kappa_theta[0], pl.straight_line(np.arange(0.5, 5.5, 0.5), 0.49366, 0.00526), 5.5, 3, " ", "\u03C9", "1/\u03B8", "skyblue", "Ajuste Lineal")
+    #pl.kappa_theta(kappa_theta[0], kappa_theta[2], "Relación entre \u03B8 y \u03B2")
+    #pl.plot(kappa_theta[0], pl.straight_line(np.arange(0.5, 5.5, 0.5), 0.99786, 0.00404), 5.5, 6, " ", "\u03B2", "\u03B8", "skyblue", "Ajuste Lineal")
 
     # Equilibrium Time
-    S = pl.read_txt('entropy.txt', 2)
-    pl.sigma_mu_gini(S[0], 1.137307083, "orange", "Valor mínimo")
-    pl.sigma_mu_gini(S[0], 1.283218639, "saddlebrown", "Valor máximo")
-    pl.plot(S[0], S[1], T, 1.35, " ", "Iteración", "Entropía [bits]", "indianred", "Entropía diferencial")
+    #S = pl.read_txt('entropy.txt', 2)
+    #pl.sigma_mu_gini(S[0], 1.137307083, "orange", "Valor mínimo")
+    #pl.sigma_mu_gini(S[0], 1.283218639, "saddlebrown", "Valor máximo")
+    #pl.plot(S[0], S[1], T, 1.35, " ", "Iteración", "Entropía [bits]", "indianred", "Entropía diferencial")
 
 main()
