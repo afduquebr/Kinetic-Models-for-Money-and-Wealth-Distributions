@@ -88,14 +88,14 @@ def main():
 
 
     #Generate Kappa and Theta vs Alpha, Beta and Omega figures
-    #kappa_theta = pl.read_txt("beta_kappa_theta.txt", 3)
+    #kappa_theta = pl.read_txt("omega_kappa_theta.txt", 3)
     #Kappa
     #pl.plot(kappa_theta[0], kappa_theta[1], 5.5, 1.5, " ", "\u03B2", "\u03BA", "steelblue", "Relación entre \u03BA y \u03B2")
     #Theta
     #for i in range(len(kappa_theta[2])):
         #kappa_theta[2][i] = 1/kappa_theta[2][i]
-    #pl.kappa_theta(kappa_theta[0], kappa_theta[2], "Relación entre \u03B8 y \u03B2")
-    #pl.plot(kappa_theta[0], pl.straight_line(np.arange(0.5, 5.5, 0.5), 0.99786, 0.00404), 5.5, 6, " ", "\u03B2", "\u03B8", "skyblue", "Ajuste Lineal")
+    #pl.kappa_theta(kappa_theta[0], kappa_theta[2], "Relación entre \u03B8 y \u03C9")
+    #pl.plot(kappa_theta[0], pl.straight_line(np.arange(0.5, 5.5, 0.5), 0.49366, 0.00526), 5.5, 3, " ", "\u03C9", "1/\u03B8", "skyblue", "Ajuste Lineal")
 
     # Equilibrium Time
     #S = pl.read_txt('entropy.txt', 2)
