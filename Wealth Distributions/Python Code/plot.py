@@ -73,8 +73,8 @@ def gini(mw, N, w):
 def gini_plot(gini, giniplot):
     string = "Medida de desigualdad (g=" + str(gini) + ")"
     gin = plt.plot(range(1, 101), range(1, 101), '--', color=colors["firebrick"], label="Curva de igualdad perfecta")
-    plot(range(1, 101), giniplot, 100, 100, string, "Porcentaje de población", "Porcentaje de riqueza", "royalblue",
-            "Curva de Lorentz")
+    plot(range(1, 101), giniplot, 100, 100, string, "Porcentaje de población", "Porcentaje de riqueza", "lightcoral",
+            "Curva de Lorenz")
 
 def sigma_mu_gini(x,y, color, legend):
     plt.plot(x, np.full(len(x), y), color=colors[color], label=legend)
@@ -86,8 +86,8 @@ def kappa_theta(x, y, legend):
     plt.plot(x, y, 'o', color=colors["dodgerblue"], label=legend)
 
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
-    plt.ylim(1.1, ymax)
-    plt.xlim(6500, xmax)
+    plt.ylim(0, ymax)
+    plt.xlim(0, xmax)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
