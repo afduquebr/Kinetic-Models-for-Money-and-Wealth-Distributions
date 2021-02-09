@@ -23,7 +23,7 @@ def histogram(N, alpha, beta, T, w, a, b, bins, S, M, mu, sigma):
 
 def histograux(bins, v):
     m, bins = np.histogram(v, bins=bins, density=True)
-    plt.bar(bins[:-1], m, align="edge", width=0.001,
+    plt.bar(bins[:-1], m, align="edge", width=0.0003,
             ec=colors["cadetblue"], color=colors["powderblue"])
     return m
 
@@ -86,11 +86,12 @@ def kappa_theta(x, y, legend):
     plt.plot(x, y, 'o', color=colors["dodgerblue"], label=legend)
 
 def plot(x, y, xmax, ymax, title, xlabel, ylabel, color, legend):
-    plt.ylim(0, ymax)
+    plt.ylim(1, ymax)
     plt.xlim(0, xmax)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
+    plt.yscale('log')
     plot = plt.plot(x, y, color=colors[color], label=legend)
     plt.legend()
     plt.show()

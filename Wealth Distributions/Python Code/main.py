@@ -103,4 +103,24 @@ def main():
     #pl.sigma_mu_gini(S[0], 1.283218639, "saddlebrown", "Valor máximo")
     #pl.plot(S[0], S[1], T, 1.35, " ", "Iteración", "Entropía [bits]", "indianred", "Entropía diferencial")
 
+
+    #Blablabla
+    P = pl.read_txt('empresas_ricas.txt', 1)
+    P_aux = list()
+    print(P[0][1])
+    for i in range(len(P[0])):
+        P_aux.append(P[0][i]/57213607000)
+    #print(P_aux)
+    bins_p = np.arange(0, 0.04, 0.0003)
+    #h, bins_p = np.histogram(P_aux, bins=bins_p, density=True)
+    m = pl.histograux(bins_p, P_aux)
+    print(m)
+    #print(len(bins_p),
+    kappa, theta = pl.gamma_parameters(bins_p, m)
+    gammastr = "Gamma(" + str(round(kappa, 2)) + "," + str(round(theta, 2))+")"
+    pl.plot(bins_p, pl.gamma_distribution(bins_p, kappa, theta), 0.04, 210, " ", "Patrimonio Bruto",
+            "Densidad de Probabilidad", "lightsalmon", gammastr)
+    #pl.gamma_distribution(bins_p, kappa, theta)
+
+
 main()
