@@ -3,7 +3,6 @@
 
 # In[10]:
 
-
 ##Modelo de ahorro
 import random, math
 import matplotlib.pyplot as plt
@@ -44,7 +43,7 @@ for del_mon in rango:
             del_x[j]=int(random.uniform(0, N))
             deuda(Din[j],f[j],del_x[j],del_mon, debtmax,N) 
 
-# calculo del coeficiente de gini
+# Calculo del coeficiente de gini
     listaux1=[0 for i in range(rep)]    
     hist=[0 for i in range(rep)]
     bins1=[0 for i in range (600)]
